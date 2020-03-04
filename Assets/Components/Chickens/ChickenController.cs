@@ -6,13 +6,21 @@ public class ChickenController : MonoBehaviour
     public GameObject character;
     public GameObject camera_obj;
 
-    protected float speed = 5; 
-    protected Vector3 character_camera_translation;
-    
+    public float hp;
+    public float stamina;
+
+    protected float MaxHP = 100;
+    protected float MaxStamina = 100;
+    protected float StaminaRecoveryRate = 10;
+    protected float Speed = 5; 
+    protected float JumpPower = 1;
+    protected float JumpStaminaCost = 3;
+
     // Start is called before the first frame update
     void Start()
     {
-        character_camera_translation = new Vector3(0, 4, -4);
+        hp = MaxHP;
+        stamina = MaxStamina;
         rb.useGravity = true;
     }
 
@@ -20,6 +28,21 @@ public class ChickenController : MonoBehaviour
     void Update()
     {
         Move();
+        Recovery();
+    }
+
+    public void OnAttack(float damage) {
+        hp = Mathf.Max(0, hp-damage);
+    }
+
+    public float GetHP()
+    {
+        return hp;
+    }
+
+    public float GetStamina()
+    {
+        return stamina;
     }
 
     protected void Move()
@@ -27,27 +50,39 @@ public class ChickenController : MonoBehaviour
         Vector3 position = character.transform.position;
 
         if (Input.GetKey(KeyCode.UpArrow)) {
-            position += Vector3.forward * Time.deltaTime;
+            position += Vector3.forward * Speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.DownArrow)) {
-            position += Vector3.back * Time.deltaTime;
+            position += Vector3.back * Speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.LeftArrow)) {
-            position += Vector3.left * Time.deltaTime;
+            position += Vector3.left * Speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.RightArrow)) {
-            position += Vector3.right * Time.deltaTime;
+            position += Vector3.right * Speed * Time.deltaTime;
         }
         
-        if (Input.GetKey(KeyCode.Space) && IsOnFloor()) {
-            rb.AddForce(0, 500, 0);
-        }
-
         character.transform.position = position;
-        camera_obj.transform.position = position + character_camera_translation;
+
+        if (Input.GetKey(KeyCode.Space)) {
+            Jump();
+        }
     }
 
-    protected bool IsOnFloor() {
-        return character.transform.position.y <= 1;
+    protected void Jump()
+    {
+        RaycastHit hit;
+        float distance = 1;
+        Vector3 dir = Vector3.down;
+
+	    if(Physics.Raycast(transform.position, dir, out hit, distance) && stamina >= JumpStaminaCost) {
+            stamina -= JumpStaminaCost;
+            rb.AddForce(Vector3.up * JumpPower, ForceMode.Impulse);
+        }
+    }
+
+    protected void Recovery()
+    {
+        stamina = Mathf.Min(MaxStamina, stamina + StaminaRecoveryRate * Time.deltaTime);
     }
 }

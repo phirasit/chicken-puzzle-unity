@@ -55,6 +55,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Components\Camera\CameraController.cs" />
+     <Compile Include="Assets\Components\Camera\HudController.cs" />
      <Compile Include="Assets\Components\Chickens\ChickenController.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/home/phirasit/work/game-programming/chicken-puzzle-unity/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
