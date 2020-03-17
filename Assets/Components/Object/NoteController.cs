@@ -1,23 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class NoteController : MonoBehaviour
 {
-    public Image noteImage;
-    // Start is called before the first frame update
-    void Start()
-    {
-        noteImage.enabled = false;
-    }
+  public ChickenController player = new ChickenController();
+  public float minDist = 5f;
+  public string text = "There's someting on high place";
+  private float dist;
+  private bool reading = false;
 
-    // Update is called once per frame
-    public void showNote()
+  void Update()
+  {
+    dist = Vector3.Distance(player.character.transform.position, gameObject.transform.position);
+    if (dist <= minDist)
     {
-        noteImage.enabled = true;
+      if (Input.GetKeyDown(KeyCode.E))
+      {
+        if (reading)
+        {
+          reading = false;
+        }
+        else
+        {
+          reading = true;
+        }
+      }
     }
-    public void hideNote()
+    else
     {
-        noteImage.enabled = false;
+      reading = false;
     }
+  }
+
+  void OnGUI()
+  {
+    if (reading)
+    {
+      GUI.TextArea(new Rect(Screen.height / 2, Screen.width / 2, 500, 500), text);
+    }
+    else if (dist <= minDist)
+    {
+      GUI.TextArea(new Rect(Screen.height / 2, Screen.width / 2, 500, 500), "Press 'E' to read.");
+    }
+  }
 }
