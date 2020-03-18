@@ -7,9 +7,10 @@ public class PredatorController : MonoBehaviour
 {
     public Rigidbody rb;
     public GameObject character;
-    public GameObject player;
+    public ChickenController player;
 
     protected float speed = 3;
+    protected float attack = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +28,6 @@ public class PredatorController : MonoBehaviour
     {
         Vector3 playerPos = player.transform.position;
         Vector3 predatorPos = character.transform.position;
-
-        print(playerPos - predatorPos);
 
         float deltaX = (playerPos - predatorPos).x;
         float deltaZ = (playerPos - predatorPos).z;
@@ -53,6 +52,8 @@ public class PredatorController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        print("Collide!");
+        if (collision.gameObject.tag == "Player") {
+            player.OnAttack(attack);
+        }
     }
 }
