@@ -1,9 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
+
 public class NoteController : MonoBehaviour
 {
-  public ChickenController player = new ChickenController();
+  public ChickenController player;
+  public GameObject note;
   public float minDist = 5f;
   public string text = "There's someting on high place";
   private float dist;
@@ -11,19 +13,12 @@ public class NoteController : MonoBehaviour
 
   void Update()
   {
-    dist = Vector3.Distance(player.character.transform.position, gameObject.transform.position);
+    dist = Vector3.Distance(player.transform.position, note.transform.position);
     if (dist <= minDist)
     {
-      if (Input.GetKeyDown(KeyCode.E))
+      if (Input.GetKeyUp(KeyCode.E))
       {
-        if (reading)
-        {
-          reading = false;
-        }
-        else
-        {
-          reading = true;
-        }
+        reading = true;
       }
     }
     else
@@ -34,13 +29,13 @@ public class NoteController : MonoBehaviour
 
   void OnGUI()
   {
-    if (reading)
+    if (dist <= minDist)
     {
-      GUI.TextArea(new Rect(Screen.height / 2, Screen.width / 2, 500, 500), text);
-    }
-    else if (dist <= minDist)
-    {
-      GUI.TextArea(new Rect(Screen.height / 2, Screen.width / 2, 500, 500), "Press 'E' to read.");
+      GUI.TextArea(new Rect(100, 100, 500, 500), "Press 'E' to read.");
+      if (reading)
+      {
+        GUI.TextArea(new Rect(100, 100, 500, 500), text);
+      }
     }
   }
 }
