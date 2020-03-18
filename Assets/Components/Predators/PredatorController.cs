@@ -8,6 +8,7 @@ public class PredatorController : MonoBehaviour
     public Rigidbody rb;
     public GameObject character;
     public ChickenController player;
+    public bool active;
 
     protected float speed = 3;
     protected float attack = 5;
@@ -21,7 +22,9 @@ public class PredatorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Follow();
+        if (active) {
+            Follow();
+        }
     }
 
     private void Follow()
