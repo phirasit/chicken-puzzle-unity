@@ -59,6 +59,7 @@
      <Compile Include="Assets\Components\Camera\HudController.cs" />
      <Compile Include="Assets\Components\Chickens\ChickenController.cs" />
      <Compile Include="Assets\Components\Object\ClosetController.cs" />
+     <Compile Include="Assets\Components\Object\DoorController.cs" />
      <Compile Include="Assets\Components\Object\KeyController.cs" />
      <Compile Include="Assets\Components\Object\NoteController.cs" />
      <Compile Include="Assets\Components\Object\WeaponController.cs" />

@@ -15,20 +15,21 @@ public class WeaponController : MonoBehaviour
 
   void Update()
   {
+    if (pickup)
+    {
+      weapon.transform.position = player.transform.position;
+    }
+
     dist = Vector3.Distance(player.transform.position, weapon.transform.position);
     if (dist <= minDist)
     {
       if (Input.GetKey(KeyCode.E))
       {
         pickup = true;
-        weapon.transform.position = player.transform.position;
       }
     }
-    else
-    {
-      pickup = false;
-    }
   }
+
   // else if (pickup && Input.GetKey(KeyCode.Escape))
   // {
   //   pickup = false;

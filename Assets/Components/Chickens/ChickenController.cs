@@ -13,7 +13,7 @@ public class ChickenController : MonoBehaviour
     protected float MaxStamina = 100;
     protected float StaminaRecoveryRate = 10;
     protected float Speed = 5; 
-    protected float JumpPower = 1;
+    protected float JumpPower = 0.7f;
     protected float JumpStaminaCost = 3;
 
     // Start is called before the first frame update

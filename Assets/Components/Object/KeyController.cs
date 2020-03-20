@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class KeyController : MonoBehaviour
 {
-    public GameObject door;
+    public DoorController door;
     public bool active;
+    public ClosetController closet;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +17,8 @@ public class KeyController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (this.active && collision.gameObject.tag == "Player") {
-            Destroy(door);
+            if (closet) closet.Toggle();
+            if (door) door.Activate();
             Destroy(gameObject);
         }
     }
