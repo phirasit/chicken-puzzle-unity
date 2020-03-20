@@ -8,7 +8,9 @@ public class HudController : MonoBehaviour
     // Start is called before the first frame update
     public Slider healthBar;
     public Slider staminaBar;
+    public Slider predatorHealthBar;
     public ChickenController player;
+    public PredatorController predator;
 
     void Start()
     {
@@ -19,5 +21,6 @@ public class HudController : MonoBehaviour
     {
         healthBar.value = player.GetHP();
         staminaBar.value = player.GetStamina();
+        predatorHealthBar.value = predator.GetHP();
     }
 }
