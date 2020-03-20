@@ -1,13 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ChickenController : MonoBehaviour
 {
     public Rigidbody rb;
     public GameObject character;
     public GameObject camera_obj;
+    public PredatorController predator;
 
     public float hp;
     public float stamina;
+    public float atkDist;
 
     protected float MaxHP = 100;
     protected float MaxStamina = 100;
@@ -15,6 +18,7 @@ public class ChickenController : MonoBehaviour
     protected float Speed = 5; 
     protected float JumpPower = 0.7f;
     protected float JumpStaminaCost = 3;
+    protected float minAtkDist = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +33,7 @@ public class ChickenController : MonoBehaviour
     {
         Move();
         Recovery();
+        CheckIfAttack();
     }
 
     public void OnAttack(float damage) {
@@ -85,4 +90,22 @@ public class ChickenController : MonoBehaviour
     {
         stamina = Mathf.Min(MaxStamina, stamina + StaminaRecoveryRate * Time.deltaTime);
     }
+
+    private void CheckIfAttack()
+    {
+        //TODO: Check if weapon has already picked up or not
+        bool hasWeapon = true;
+        if (hasWeapon)
+        {
+            atkDist = Vector3.Distance(character.transform.position, predator.transform.position);
+            //TODO: Add weapon damage
+            float weaponDmg = 15;
+            if (Input.GetKeyDown(KeyCode.R) && atkDist < minAtkDist)
+            {
+                predator.OnAttack(weaponDmg);
+            }
+        }
+        
+    }
+
 }

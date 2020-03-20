@@ -12,10 +12,14 @@ public class PredatorController : MonoBehaviour
 
     protected float speed = 3;
     protected float attack = 5;
+    public float hp;
+
+    protected float MaxHP = 150;
 
     // Start is called before the first frame update
     void Start()
     {
+        hp = MaxHP;
         rb.useGravity = true;
     }
 
@@ -24,6 +28,10 @@ public class PredatorController : MonoBehaviour
     {
         if (active) {
             Follow();
+        }
+        if (hp == 0)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -53,10 +61,20 @@ public class PredatorController : MonoBehaviour
         return character.transform.position.y <= 1;
     }
 
+    public void OnAttack(float damage)
+    {
+        hp = Mathf.Max(0, hp - damage);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player") {
+        if (collision.gameObject.CompareTag("Player")) {
             player.OnAttack(attack);
         }
+    }
+
+    public float GetHP()
+    {
+        return hp;
     }
 }
