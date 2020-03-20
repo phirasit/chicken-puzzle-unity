@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.56452245, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -804,6 +804,7 @@ MonoBehaviour:
   character: {fileID: 740703118}
   player: {fileID: 1390810403}
   active: 0
+  hp: 0
 --- !u!33 &740703120
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2062,8 +2063,10 @@ MonoBehaviour:
   rb: {fileID: 1390810404}
   character: {fileID: 1390810398}
   camera_obj: {fileID: 963194225}
+  predator: {fileID: 740703119}
   hp: 0
   stamina: 0
+  atkDist: 0
 --- !u!54 &1390810404
 Rigidbody:
   m_ObjectHideFlags: 0

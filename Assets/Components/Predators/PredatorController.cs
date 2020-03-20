@@ -15,23 +15,25 @@ public class PredatorController : MonoBehaviour
     public float hp;
 
     protected float MaxHP = 150;
+    private bool isCollide;
 
     // Start is called before the first frame update
     void Start()
     {
         hp = MaxHP;
+        isCollide = false;
         rb.useGravity = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (active) {
+        if (active && !isCollide) {
             Follow();
         }
         if (hp == 0)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -54,6 +56,7 @@ public class PredatorController : MonoBehaviour
         }
 
         character.transform.position = predatorPos;
+        
     }
 
     protected bool IsOnFloor()
@@ -68,9 +71,16 @@ public class PredatorController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player")) {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isCollide = true;
             player.OnAttack(attack);
         }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        isCollide = false;
     }
 
     public float GetHP()
