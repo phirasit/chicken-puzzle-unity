@@ -6,14 +6,20 @@ public class NoteController : MonoBehaviour
 {
   public ChickenController player;
   public GameObject note;
-  public float minDist = 2f;
-  public string text = "Press 'E' to read.";
+  public float minDist = 1f;
+  public string text;
 
+  public string text1 = "Press 'E' to read.";
+  public string text2 = "There's someting on high place\n\nPress 'Esc' to cancel.";
   private float dist;
   private bool reading = false;
   // private float h = Screen.height*1f/2;
   // private float w = Screen.width*1f/2;
 
+  void Start()
+  {
+    text = text1;
+  }
   void Update()
   {
     dist = Vector3.Distance(player.transform.position, note.transform.position);
@@ -22,18 +28,18 @@ public class NoteController : MonoBehaviour
       if (Input.GetKey(KeyCode.E))
       {
         reading = true;
-        text = "There's someting on high place\n\nPress 'Esc' to cancel.";
+        text = text2;
       }
       else if (reading && Input.GetKey(KeyCode.Escape))
       {
         reading = false;
-        text = "Press 'E' to read.";
+        text = text1;
       }
     }
     else
     {
       reading = false;
-      text = "Press 'E' to read.";
+      text = text1;
     }
   }
 
@@ -41,7 +47,7 @@ public class NoteController : MonoBehaviour
   {
     if (dist <= minDist)
     {
-      GUI.TextArea(new Rect(100, 50, 200, 100), text);      
+      GUI.TextArea(new Rect(100, 50, 200, 100), text);
     }
   }
 }
