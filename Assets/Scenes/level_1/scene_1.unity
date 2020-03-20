@@ -2302,8 +2302,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1390810403}
   note: {fileID: 1461923627}
-  minDist: 2
-  text: 'There''s someting on high place
+  minDist: 1
+  text: 
+  text1: Press 'E' to read.
+  text2: 'There''s someting on high place
+
 
     Press ''Esc'' to cancel.'
 --- !u!64 &1461923629
@@ -2960,10 +2963,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ee10b3f195dccc4294738b746d03578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  weapon: {fileID: 0}
+  player: {fileID: 1390810403}
+  weapon: {fileID: 1959083151}
   minDist: 1
-  text: This is stick.
+  text: Press 'E' to pickup.
 --- !u!4 &474371866822520116
 Transform:
   m_ObjectHideFlags: 0
