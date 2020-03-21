@@ -22,9 +22,9 @@ public class WeakWallController : MonoBehaviour
             //break wall
         // }
     }
-    void OnGUI()
-    {
-        if (dist <= minDist) return
-        GUI.TextArea(new Rect(100, 50, 200, 100), text);
-    }
+    //void OnGUI()
+    //{
+    //    if (dist <= minDist) return
+    //    GUI.TextArea(new Rect(100, 50, 200, 100), text);
+    //}
 }
