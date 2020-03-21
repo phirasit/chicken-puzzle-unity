@@ -19,6 +19,8 @@ public class ChickenController : MonoBehaviour
     protected float JumpPower = 0.7f;
     protected float JumpStaminaCost = 3;
     protected float minAtkDist = 2f;
+    protected float attack = 1.0f;
+    protected float attackRange = 2.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,11 @@ public class ChickenController : MonoBehaviour
         Move();
         Recovery();
         CheckIfAttack();
+    }
+
+    public void OnPickUpWeapon(WeaponController weapon) {
+        attack += weapon.GetAttack();
+        attackRange = Mathf.Max(attackRange, weapon.GetRange());
     }
 
     public void OnAttack(float damage) {
@@ -72,6 +79,10 @@ public class ChickenController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space)) {
             Jump();
         }
+
+        if (Input.GetKey(KeyCode.G)) {
+            Attack();
+        }
     }
 
     protected void Jump()
@@ -80,9 +91,21 @@ public class ChickenController : MonoBehaviour
         float distance = 1;
         Vector3 dir = Vector3.down;
 
-	    if(Physics.Raycast(transform.position, dir, out hit, distance) && stamina >= JumpStaminaCost) {
+	    if (Physics.Raycast(transform.position, dir, out hit, distance) && stamina >= JumpStaminaCost) {
             stamina -= JumpStaminaCost;
             rb.AddForce(Vector3.up * JumpPower, ForceMode.Impulse);
+        }
+    }
+
+    protected void Attack()
+    {
+        PredatorController[] enemy = GameObject.FindObjectsOfType<PredatorController>();
+        for (int i = 0; i < enemy.Length; ++i)
+        {
+            float distance = Vector3.Distance(transform.position, enemy[i].transform.position);
+            if (distance <= attackRange) {
+                enemy[i].OnAttack(attack);
+            }
         }
     }
 
