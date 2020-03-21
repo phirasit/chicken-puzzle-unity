@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.56452245, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1153,7 +1153,7 @@ PrefabInstance:
     - target: {fileID: 1573689782598241277, guid: f0955984b7e19054697d527e0c808752,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.07917756
+      value: -0.78
       objectReference: {fileID: 0}
     - target: {fileID: 1573689782598241277, guid: f0955984b7e19054697d527e0c808752,
         type: 3}
@@ -1213,7 +1213,7 @@ PrefabInstance:
     - target: {fileID: 1573689782598241277, guid: f0955984b7e19054697d527e0c808752,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 14.722501
+      value: 17.48297
       objectReference: {fileID: 0}
     - target: {fileID: 1573689782598241279, guid: f0955984b7e19054697d527e0c808752,
         type: 3}
@@ -3265,6 +3265,8 @@ MonoBehaviour:
   player: {fileID: 1390810403}
   weapon: {fileID: 1959083151}
   minDist: 1
+  attack: 5
+  range: 4
   text: Press 'E' to pickup.
 --- !u!4 &474371866822520116
 Transform:
