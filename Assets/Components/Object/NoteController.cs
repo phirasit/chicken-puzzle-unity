@@ -10,7 +10,7 @@ public class NoteController : MonoBehaviour
   public string text;
 
   public string text1 = "Press 'E' to read.";
-  public string text2 = "There's someting on high place\n\nPress 'Esc' to cancel.";
+  public string text2 = ".\n\nPress 'Esc' to cancel.";
   private float dist;
   private bool reading = false;
   // private float h = Screen.height*1f/2;
