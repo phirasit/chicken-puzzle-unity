@@ -9,9 +9,10 @@ public class PredatorController : MonoBehaviour
     public GameObject character;
     public ChickenController player;
     public bool active;
+    protected float StepBack = 1f;
 
     protected float speed = 3;
-    protected float attack = 5;
+    protected float attack = 3;
     public float hp;
 
     protected float MaxHP = 150;
@@ -66,7 +67,9 @@ public class PredatorController : MonoBehaviour
 
     public void OnAttack(float damage)
     {
-        hp = Mathf.Max(0, hp - damage);
+        if (active) {
+            hp = Mathf.Max(0, hp - damage);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -75,6 +78,18 @@ public class PredatorController : MonoBehaviour
         {
             isCollide = true;
             player.OnAttack(attack);
+
+            Vector3 playerPos = player.transform.position;
+            Vector3 predatorPos = character.transform.position;
+
+            float deltaX = (playerPos - predatorPos).x;
+            float deltaZ = (playerPos - predatorPos).z;
+            Vector3 direction = new Vector3(-deltaX, 0, -deltaZ);
+
+            if (Vector3.Distance(playerPos, predatorPos) < StepBack) {
+                direction.Normalize();
+                character.transform.position += (direction * StepBack); 
+            }
         }
     }
 
