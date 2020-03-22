@@ -35,7 +35,6 @@ public class ChickenController : MonoBehaviour
     {
         Move();
         Recovery();
-        CheckIfAttack();
     }
 
     public void OnPickUpWeapon(WeaponController weapon) {
@@ -55,6 +54,11 @@ public class ChickenController : MonoBehaviour
     public float GetStamina()
     {
         return stamina;
+    }
+
+    public float GetAttack()
+    {
+        return attack;
     }
 
     protected void Move()
@@ -80,7 +84,7 @@ public class ChickenController : MonoBehaviour
             Jump();
         }
 
-        if (Input.GetKey(KeyCode.G)) {
+        if (Input.GetKeyDown(KeyCode.G)) {
             Attack();
         }
     }
@@ -113,22 +117,4 @@ public class ChickenController : MonoBehaviour
     {
         stamina = Mathf.Min(MaxStamina, stamina + StaminaRecoveryRate * Time.deltaTime);
     }
-
-    private void CheckIfAttack()
-    {
-        //TODO: Check if weapon has already picked up or not
-        bool hasWeapon = true;
-        if (hasWeapon)
-        {
-            atkDist = Vector3.Distance(character.transform.position, predator.transform.position);
-            //TODO: Add weapon damage
-            float weaponDmg = 15;
-            if (Input.GetKeyDown(KeyCode.R) && atkDist < minAtkDist)
-            {
-                predator.OnAttack(weaponDmg);
-            }
-        }
-        
-    }
-
 }
