@@ -73,6 +73,7 @@
     <Compile Include="Assets\Components\Object\WeakWallController.cs" />
     <Compile Include="Assets\Components\Object\WeaponController.cs" />
     <Compile Include="Assets\Components\Predators\PredatorController.cs" />
+    <Compile Include="Assets\Components\Scripts\PredatorWithKeyController.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/Project/chicken-puzzle-unity/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
