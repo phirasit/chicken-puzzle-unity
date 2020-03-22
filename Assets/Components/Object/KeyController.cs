@@ -5,6 +5,7 @@ using UnityEngine;
 public class KeyController : MonoBehaviour
 {
     public DoorController door;
+    public DoorController shedDoor;
     public bool active;
     public ClosetController closet;
 
@@ -21,6 +22,7 @@ public class KeyController : MonoBehaviour
         {
             if (closet) closet.Toggle();
             if (door) door.Activate();
+            if (shedDoor) shedDoor.Activate();
             Destroy(gameObject);
         }
     }
