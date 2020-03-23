@@ -9,7 +9,7 @@ public class DoorController : MonoBehaviour
     public ChickenController player;
     public float startHP;
     protected float progress; 
-    private float unlockTime = 5.0f;
+    public float unlockTime = 5.0f;
 
     private float dist;
     private float minDist = 3.0f;

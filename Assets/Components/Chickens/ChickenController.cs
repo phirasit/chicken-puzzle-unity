@@ -16,7 +16,7 @@ public class ChickenController : MonoBehaviour
     protected float MaxStamina = 100;
     protected float StaminaRecoveryRate = 10;
     protected float Speed = 5; 
-    protected float JumpPower = 0.7f;
+    protected float JumpPower = 0.5f;
     protected float JumpStaminaCost = 3;
     protected float minAtkDist = 2f;
     protected float attack = 1.0f;

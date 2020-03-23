@@ -1973,6 +1973,7 @@ MonoBehaviour:
   hasKey: 0
   player: {fileID: 1178236467}
   startHP: 0
+  unlockTime: 0
 --- !u!65 &1035546682
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4297,6 +4298,7 @@ MonoBehaviour:
   hasKey: 0
   player: {fileID: 1178236467}
   startHP: 0
+  unlockTime: 5
 --- !u!1 &1949777262
 GameObject:
   m_ObjectHideFlags: 0
