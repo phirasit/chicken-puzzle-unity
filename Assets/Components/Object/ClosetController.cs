@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class ClosetController : MonoBehaviour
 {
-  public GameObject door;
-  public PredatorController predator;
+    public GameObject door;
+    public PredatorController predator;
+    public GameObject predatorHealthBar;
 
-  protected bool isOpened = false;
+    protected bool isOpened = false;
 
-  public void Toggle() {
-    isOpened = !isOpened;
-    door.SetActive(!isOpened);
 
-    if (predator) {
-      predator.active = true;
+    private void Start()
+    {
+        predatorHealthBar.SetActive(false);
     }
-  }
+
+    public void Toggle()
+    {
+        isOpened = !isOpened;
+        door.SetActive(!isOpened);
+        if (predatorHealthBar) predatorHealthBar.SetActive(true);
+        if (predator)
+        {
+            predator.active = true;
+        }
+    }
 }
