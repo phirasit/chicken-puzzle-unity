@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667555, g: 0.48427182, b: 0.5645241, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -294,10 +294,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -679,6 +679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 377529157}
   predator: {fileID: 740703119}
+  predatorHealthBar: {fileID: 1482146497}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2365,6 +2366,7 @@ MonoBehaviour:
   hasKey: 0
   player: {fileID: 1390810403}
   startHP: 0
+  unlockTime: 5
 --- !u!1 &1461923627
 GameObject:
   m_ObjectHideFlags: 0
@@ -2884,9 +2886,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 1453685829}
+  shedDoor: {fileID: 0}
   active: 1
   closet: {fileID: 449533556}
-  predatorHealthBar: {fileID: 1482146497}
 --- !u!65 &1603311164
 BoxCollider:
   m_ObjectHideFlags: 0
